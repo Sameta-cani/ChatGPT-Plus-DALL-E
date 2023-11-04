@@ -1,6 +1,5 @@
 import streamlit as st
 import openai
-from func import add
 
 openai.api_key = st.secrets["api_key"]
 
@@ -29,7 +28,7 @@ if submit and user_input:
 
     prompt = gpt_response["choices"][0]["message"]["content"]
     st.write(prompt)
-    st.write(add(1, 2))
+    # st.write(add(1, 2))
 
     with st.spinner(text="Waiting for DALL-E..."):
         dalle_response = openai.Image.create(
