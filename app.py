@@ -32,7 +32,7 @@ if img_file is not None:
 
       st.image(f'image/{img_file.name}')
 
-print(model.img2img, img_file)
+print(model.img2img)
 
 with st.form(key="form"):
     user_input = st.text_input(label="Prompt")
