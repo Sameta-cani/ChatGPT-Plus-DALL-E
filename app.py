@@ -32,6 +32,7 @@ if submit and user_input:
     st.write(prompt)
     st.write(func.add(1, 2))
     st.write(diffusers.__version__)
+    st.write(diffusers.StableDiffusionAdapterPipeline, diffusers.ControlNetModel, diffusers.utils.load_image, diffusers.PNDMScheduler)
 
 
     with st.spinner(text="Waiting for DALL-E..."):
