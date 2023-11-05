@@ -23,10 +23,10 @@ st.title("ChatGPT Plus DALL-E")
 
 img_file = st.file_uploader('이미지를 업로드 하세요.', type=['png', 'jpg', 'jpeg'])
 if img_file is not None:
-      print(type(img_file))
-      print(img_file.name)
-      print(img_file.size)
-      print(img_file.type)
+      st.write(type(img_file))
+      st.write(img_file.name)
+      st.write(img_file.size)
+      st.write(img_file.type)
 
       save_uploaded_file('image', img_file)
 
