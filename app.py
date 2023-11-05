@@ -2,6 +2,7 @@ import streamlit as st
 import openai
 import func
 import diffusers
+import cv2
 
 openai.api_key = st.secrets["api_key"]
 
