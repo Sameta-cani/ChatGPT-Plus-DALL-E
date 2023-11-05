@@ -4,11 +4,12 @@ import func
 import diffusers
 import cv2
 import PIL
+import numpy as np
 
 openai.api_key = st.secrets["api_key"]
 
 st.title("ChatGPT Plus DALL-E")
-
+st.write(np.__version__)
 with st.form(key="form"):
     user_input = st.text_input(label="Prompt")
     size = st.selectbox("Size", ["1024x1024", "512x512", "256x256"])
@@ -32,7 +33,6 @@ if submit and user_input:
 
     prompt = gpt_response["choices"][0]["message"]["content"]
     st.write(prompt)
-    st.write(PIL.__version__)
 
     with st.spinner(text="Waiting for DALL-E..."):
         dalle_response = openai.Image.create(
