@@ -5,11 +5,12 @@ import diffusers
 import cv2
 import PIL
 import numpy as np
+import torch
 
 openai.api_key = st.secrets["api_key"]
 
 st.title("ChatGPT Plus DALL-E")
-st.write(np.__version__)
+st.write(torch.__version__)
 with st.form(key="form"):
     user_input = st.text_input(label="Prompt")
     size = st.selectbox("Size", ["1024x1024", "512x512", "256x256"])
