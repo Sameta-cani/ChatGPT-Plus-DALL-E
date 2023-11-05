@@ -6,7 +6,7 @@ import cv2
 import PIL
 import numpy as np
 import os
-# import model
+import model
 
 
 # 파일 업로드 함수
@@ -32,7 +32,7 @@ if img_file is not None:
 
       st.image(f'image/{img_file.name}')
 
-# st.write(model.img2img)
+st.write(model.img2img)
 
 with st.form(key="form"):
     user_input = st.text_input(label="Prompt")
