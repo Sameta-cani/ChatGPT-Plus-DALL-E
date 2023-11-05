@@ -8,11 +8,22 @@ import numpy as np
 import model
 import torch
 
+# 필요한 모듈 import
+import os
+
+# 파일 업로드 함수
+def save_uploaded_file(directory, file):
+	if not os.path.exists(directory):
+		os.makedirs(directory)
+	with open(os.path.join(directory, file.name)) as f:
+		f.write(file.getbuffer())
+	return st.success('파일 업로드 성공')
+
 openai.api_key = st.secrets["api_key"]
 
 st.title("ChatGPT Plus DALL-E")
 # st.write(torch.__version__)
-st.image('./증명사진.jpg')
+# st.image('./증명사진.jpg')
 with st.form(key="form"):
     user_input = st.text_input(label="Prompt")
     size = st.selectbox("Size", ["1024x1024", "512x512", "256x256"])
