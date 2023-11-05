@@ -1,6 +1,7 @@
 import streamlit as st
 import openai
 import func
+import diffusers
 
 openai.api_key = st.secrets["api_key"]
 
@@ -30,6 +31,8 @@ if submit and user_input:
     prompt = gpt_response["choices"][0]["message"]["content"]
     st.write(prompt)
     st.write(func.add(1, 2))
+    st.write(diffusers.__version__)
+
 
     with st.spinner(text="Waiting for DALL-E..."):
         dalle_response = openai.Image.create(
