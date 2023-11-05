@@ -6,6 +6,8 @@ import cv2
 import PIL
 import numpy as np
 import os
+import model
+
 
 # 파일 업로드 함수
 def save_uploaded_file(directory, file):
@@ -29,6 +31,8 @@ if img_file is not None:
       save_uploaded_file('image', img_file)
 
       st.image(f'image/{img_file.name}')
+
+print(model.img2img, img_file)
 
 with st.form(key="form"):
     user_input = st.text_input(label="Prompt")
