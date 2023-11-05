@@ -3,6 +3,7 @@ import openai
 import func
 import diffusers
 import cv2
+import PIL
 
 openai.api_key = st.secrets["api_key"]
 
@@ -31,7 +32,7 @@ if submit and user_input:
 
     prompt = gpt_response["choices"][0]["message"]["content"]
     st.write(prompt)
-    st.write(cv2.__version__)
+    st.write(PIL.__version__)
 
     with st.spinner(text="Waiting for DALL-E..."):
         dalle_response = openai.Image.create(
