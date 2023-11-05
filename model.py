@@ -25,6 +25,8 @@ pipe = StableDiffusionControlNetPipeline.from_pretrained(
 pipe.scheduler = PNDMScheduler.from_config(pipe.scheduler.config)
 pipe.enable_model_cpu_offload()
 
+print(cv2.__version__)
+
 def img2img(img_path, prompt, negative_prompt, num_steps=20, guidance_scale=7, seed=0, low=100, high=200):
     image = load_image(img_path)
 
