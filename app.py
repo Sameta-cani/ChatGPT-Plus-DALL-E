@@ -6,7 +6,7 @@ import cv2
 import PIL
 import numpy as np
 import model
-# import torch
+import torch
 
 openai.api_key = st.secrets["api_key"]
 
@@ -17,7 +17,7 @@ with st.form(key="form"):
     user_input = st.text_input(label="Prompt")
     size = st.selectbox("Size", ["1024x1024", "512x512", "256x256"])
     submit = st.form_submit_button(label="Submit")
-
+'''
 prompt = "masterpiece, best quality, ultra-detailed, illustration, school uniform, scarf, gymnasium"
 negative_prompt = "lowres, ((bad anatomy)), ((bad hands)), text, missing finger, extra digits, fewer digits, blurry, ((mutated hands and fingers)), (poorly drawn face), ((mutation)), ((deformed face)), (ugly), ((bad proportions)), ((extra limbs)), extra face, (double head), (extra head), ((extra feet)), monster, logo, cropped, worst quality, low quality, normal quality, jpeg, humpbacked, long body, long neck, ((jpeg artifacts))"
 num_steps = 20
@@ -26,6 +26,7 @@ seed = 3467120481370323442
 
 image, canny_image, out_image = model.img2img("증명사진.jpg", prompt, negative_prompt, num_steps, guidance_scale, seed)
 st.image(out_image)
+'''
 
 if submit and user_input:
     gpt_prompt = [{
