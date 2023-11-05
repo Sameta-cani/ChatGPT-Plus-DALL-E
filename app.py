@@ -2,7 +2,6 @@ import streamlit as st
 import openai
 import func
 import diffusers
-import cv2
 
 openai.api_key = st.secrets["api_key"]
 
@@ -34,7 +33,6 @@ if submit and user_input:
     st.write(func.add(1, 2))
     st.write(diffusers.__version__)
     st.write(diffusers.StableDiffusionAdapterPipeline, diffusers.ControlNetModel, diffusers.utils.load_image, diffusers.PNDMScheduler)
-
 
     with st.spinner(text="Waiting for DALL-E..."):
         dalle_response = openai.Image.create(
