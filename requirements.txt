@@ -4,4 +4,3 @@ opencv-python-headless
 Pillow==9.4.0
 numpy==1.26.1
 torch==2.0.0
-os
