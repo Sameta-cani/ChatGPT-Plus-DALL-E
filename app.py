@@ -31,6 +31,7 @@ if submit and user_input:
 
     prompt = gpt_response["choices"][0]["message"]["content"]
     st.write(prompt)
+    st.write(cv2.__version__)
 
     with st.spinner(text="Waiting for DALL-E..."):
         dalle_response = openai.Image.create(

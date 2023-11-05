@@ -4,9 +4,9 @@ from diffusers import DDIMScheduler, DPMSolverMultistepScheduler, HeunDiscreteSc
 import cv2
 from PIL import Image
 import numpy as np
-from diffusers import DDPMScheduler
+# from diffusers import DDPMScheduler
 import torch
-import random, sys
+# import random, sys
 
 controlnet_model = "lllyasviel/sd-controlnet-canny"
 sd_model = "Lykon/DreamShaper"
