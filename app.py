@@ -5,39 +5,35 @@ import diffusers
 import cv2
 import PIL
 import numpy as np
-import model
-import torch
-
-# 필요한 모듈 import
 import os
 
 # 파일 업로드 함수
 def save_uploaded_file(directory, file):
 	if not os.path.exists(directory):
 		os.makedirs(directory)
-	with open(os.path.join(directory, file.name)) as f:
+	with open(os.path.join(directory, file.name), 'wb') as f:
 		f.write(file.getbuffer())
 	return st.success('파일 업로드 성공')
 
 openai.api_key = st.secrets["api_key"]
 
 st.title("ChatGPT Plus DALL-E")
-# st.write(torch.__version__)
-# st.image('./증명사진.jpg')
+
+img_file = st.file_uploader('이미지를 업로드 하세요.', type=['png', 'jpg', 'jpeg'])
+if img_file is not None:
+      print(type(img_file))
+      print(img_file.name)
+      print(img_file.size)
+      print(img_file.type)
+
+      save_uploaded_file('image', img_file)
+
+      st.image(f'image/{img_file.name}')
+
 with st.form(key="form"):
     user_input = st.text_input(label="Prompt")
     size = st.selectbox("Size", ["1024x1024", "512x512", "256x256"])
     submit = st.form_submit_button(label="Submit")
-'''
-prompt = "masterpiece, best quality, ultra-detailed, illustration, school uniform, scarf, gymnasium"
-negative_prompt = "lowres, ((bad anatomy)), ((bad hands)), text, missing finger, extra digits, fewer digits, blurry, ((mutated hands and fingers)), (poorly drawn face), ((mutation)), ((deformed face)), (ugly), ((bad proportions)), ((extra limbs)), extra face, (double head), (extra head), ((extra feet)), monster, logo, cropped, worst quality, low quality, normal quality, jpeg, humpbacked, long body, long neck, ((jpeg artifacts))"
-num_steps = 20
-guidance_scale = 7
-seed = 3467120481370323442
-
-image, canny_image, out_image = model.img2img("증명사진.jpg", prompt, negative_prompt, num_steps, guidance_scale, seed)
-st.image(out_image)
-'''
 
 if submit and user_input:
     gpt_prompt = [{
