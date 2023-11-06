@@ -7,7 +7,6 @@ import cv2
 import PIL
 import numpy as np
 import os
-import model
 
 # 파일 업로드 함수
 def save_uploaded_file(directory, file):

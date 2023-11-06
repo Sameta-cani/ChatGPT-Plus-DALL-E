@@ -25,6 +25,9 @@ pipe = StableDiffusionControlNetPipeline.from_pretrained(
 pipe.scheduler = PNDMScheduler.from_config(pipe.scheduler.config)
 pipe.enable_model_cpu_offload()
 
+print(pipe.download)
+
+
 print(cv2.__version__)
 
 def tmp(a, b):
