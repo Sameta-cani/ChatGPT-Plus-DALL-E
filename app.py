@@ -31,8 +31,7 @@ if img_file is not None:
 
       st.image(f'image/{img_file.name}')
 
-st.success(model.tmp)
-st.write('test succ')
+st.write('testing' + model.tmp(10, 11))
 
 with st.form(key="form"):
     user_input = st.text_input(label="Prompt")
