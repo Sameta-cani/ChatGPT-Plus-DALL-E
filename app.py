@@ -33,6 +33,11 @@ if img_file is not None:
 
 st.write(model.img2img)
 
+
+
+''''
+### original form ###
+
 with st.form(key="form"):
     user_input = st.text_input(label="Prompt")
     size = st.selectbox("Size", ["1024x1024", "512x512", "256x256"])
@@ -64,3 +69,4 @@ if submit and user_input:
         )
     
     st.image(dalle_response["data"][0]["url"])
+'''
