@@ -2,6 +2,7 @@ import streamlit as st
 import openai
 import func
 import diffusers
+import torch
 import cv2
 import PIL
 import numpy as np
@@ -30,16 +31,15 @@ if img_file is not None:
     save_uploaded_file('image', img_file)
 
     st.image(f'image/{img_file.name}')
+	
+controlnet_model = "lllyasviel/sd-controlnet-canny"
+sd_model = "Lykon/DreamShaper"
 
-    prompt = "masterpiece, best quality, ultra-detailed, illustration, school uniform, scarf, gymnasium"
-    negative_prompt = "lowres, ((bad anatomy)), ((bad hands)), text, missing finger, extra digits, fewer digits, blurry, ((mutated hands and fingers)), (poorly drawn face), ((mutation)), ((deformed face)), (ugly), ((bad proportions)), ((extra limbs)), extra face, (double head), (extra head), ((extra feet)), monster, logo, cropped, worst quality, low quality, normal quality, jpeg, humpbacked, long body, long neck, ((jpeg artifacts))"
-    num_steps = 20
-    guidance_scale = 7
-    seed = 3467120481370323442
-
-    image, canny_image, out_image = model.img2img(f'image/{img_file.name}', prompt, negative_prompt, num_steps, guidance_scale, seed)
-
-    st.image(out_image)
+controlnet = diffusers.ControlNetModel.from_pretrained(
+    controlnet_model,
+    torch_dtype=torch.float16
+)
+st.write(controlnet)
 
 ''''
 ### original form ###
