@@ -6,6 +6,7 @@ import cv2
 import PIL
 import numpy as np
 import os
+import model
 
 # 파일 업로드 함수
 def save_uploaded_file(directory, file):
@@ -21,16 +22,24 @@ st.title("ChatGPT Plus DALL-E")
 
 img_file = st.file_uploader('이미지를 업로드 하세요.', type=['png', 'jpg', 'jpeg'])
 if img_file is not None:
-      st.write(type(img_file))
-      st.write(img_file.name)
-      st.write(img_file.size)
-      st.write(img_file.type)
+    st.write(type(img_file))
+    st.write(img_file.name)
+    st.write(img_file.size)
+    st.write(img_file.type)
 
-      save_uploaded_file('image', img_file)
+    save_uploaded_file('image', img_file)
 
-      st.image(f'image/{img_file.name}')
+    st.image(f'image/{img_file.name}')
 
+    prompt = "masterpiece, best quality, ultra-detailed, illustration, school uniform, scarf, gymnasium"
+    negative_prompt = "lowres, ((bad anatomy)), ((bad hands)), text, missing finger, extra digits, fewer digits, blurry, ((mutated hands and fingers)), (poorly drawn face), ((mutation)), ((deformed face)), (ugly), ((bad proportions)), ((extra limbs)), extra face, (double head), (extra head), ((extra feet)), monster, logo, cropped, worst quality, low quality, normal quality, jpeg, humpbacked, long body, long neck, ((jpeg artifacts))"
+    num_steps = 20
+    guidance_scale = 7
+    seed = 3467120481370323442
 
+    image, canny_image, out_image = model.img2img(f'image/{img_file.name}', prompt, negative_prompt, num_steps, guidance_scale, seed)
+
+    st.image(out_image)
 
 ''''
 ### original form ###
